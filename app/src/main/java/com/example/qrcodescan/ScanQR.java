@@ -50,7 +50,7 @@ public class ScanQR extends AppCompatActivity {
         final IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         TextView resultText=(TextView)findViewById(R.id.resulttext);
         Button sendbutton=(Button)findViewById(R.id.sendbutton);
-
+/*
         CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
                 getApplicationContext(),
                 "ap-northeast-2:c136b3bc-9f17-492d-9373-fdd2485f7a1b", // 자격 증명 풀 ID
@@ -64,6 +64,7 @@ public class ScanQR extends AppCompatActivity {
 
         final TransferUtility transferUtility = new TransferUtility(s3, getApplicationContext());
 
+*/
         if(result != null) {
             if(result.getContents() == null) {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
@@ -74,6 +75,7 @@ public class ScanQR extends AppCompatActivity {
 
                 sendbutton.setOnClickListener(new View.OnClickListener(){
                     public void onClick(View v){
+/*
                         File temp = null;
                         try {
                             temp=File.createTempFile("My_shoes_info",".txt");
@@ -90,7 +92,11 @@ public class ScanQR extends AppCompatActivity {
                         );
                         Toast.makeText(ScanQR.this, "전송 완료", Toast.LENGTH_LONG).show();
                         temp.deleteOnExit();
-                        finish();
+                         finish();
+*/
+                        Intent intent = new Intent(ScanQR.this, RecommandShoe.class);
+                        startActivity(intent);
+
                     }
                 });
 

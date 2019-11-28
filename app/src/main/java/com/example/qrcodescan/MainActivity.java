@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         scanQRbutton=(Button)findViewById(R.id.scanbutton);
         scanQRbutton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, ScanQR.class);
+                Intent intent = new Intent(MainActivity.this, RecommandShoe.class);
                 startActivity(intent);
             }
         });
