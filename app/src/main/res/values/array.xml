@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="my_array">
+        <item>모든 브랜드</item>
+        <item>나이키</item>
+        <item>아디다스</item>
+        <item>뉴발란스</item>
+        <item>컨버스</item>
+    </string-array>
+</resources>

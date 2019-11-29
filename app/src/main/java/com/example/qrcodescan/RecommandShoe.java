@@ -37,19 +37,21 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 import static android.os.SystemClock.sleep;
 
 public class RecommandShoe extends AppCompatActivity {
-    private LinearLayout dlayout;
     Bitmap bitmap;
-
     Integer shoenum=0;
     String[][] shoes=new String[100][8];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommand_shoe);
+
+
+
 
         CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
                 getApplicationContext(),
