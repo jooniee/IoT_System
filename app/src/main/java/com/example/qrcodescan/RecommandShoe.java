@@ -139,7 +139,6 @@ public class RecommandShoe extends AppCompatActivity {
         ScrollView scroll=(ScrollView)findViewById(R.id.scroll);
         LinearLayout list =(LinearLayout)scroll.findViewById(R.id.list);
 
-        Log.d("test",shoenum.toString());
         for(int i=0;i<shoenum;i++)
         {
             LinearLayout dshoe = (LinearLayout) View.inflate(this,R.layout.shoe,null);
