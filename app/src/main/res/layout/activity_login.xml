@@ -14,7 +14,6 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingTop="16dp"
-        android:background="@color/main"
         android:weightSum="5">
 
         <RelativeLayout

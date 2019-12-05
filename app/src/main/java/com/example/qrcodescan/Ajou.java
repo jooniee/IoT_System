@@ -3,6 +3,7 @@ package com.example.qrcodescan;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -50,15 +51,20 @@ public class Ajou {
             BufferedReader rd = getSimple(new URL(MOBILE + GET_PROFILE), cookie);
             while ((line = rd.readLine()) != null) {
                 if (line.indexOf("성명") > -1) {
+
                     line = rd.readLine();
+
                     user.setName(line.substring(line.indexOf("<td>") + 4, line.indexOf("</td>")));
                 } else if (line.indexOf("학번") > -1) {
+
                     line = rd.readLine();
+
                     pattern = Pattern.compile("[0-9]+");
                     matcher = pattern.matcher(line);
                     if (matcher.find())
                         user.setNumber(Integer.parseInt(matcher.group(0)));
                 } else if (line.indexOf("전공") > -1) {
+
                     line = rd.readLine();
                     user.setMajor(line.substring(line.indexOf("<td>") + 4, line.indexOf("</td>")));
                 }
@@ -122,6 +128,7 @@ public class Ajou {
             return new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
+
             e.printStackTrace();
             return null;
         }
