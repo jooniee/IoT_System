@@ -14,25 +14,28 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="110dp"
             android:layout_marginTop="50dp"
             android:layout_weight="0"
-            android:text="신발 추천 시스템"
+            android:gravity="center_horizontal"
+            android:text="스마트 슈즈 스토어"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#3BC1FF"
             android:textSize="30sp" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="160dp"
             android:layout_marginTop="5dp"
             android:layout_weight="0"
-            android:text="IoT 시스템설계" />
+            android:gravity="center_horizontal"
+            android:text="IoT 시스템설계 프로젝트" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_weight="0"
             android:orientation="horizontal">
 
@@ -42,7 +45,7 @@
                 android:layout_height="150dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
-                app:srcCompat="@mipmap/ic_launcher" />
+                app:srcCompat="@drawable/sb__btn_bg" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,8 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:layout_weight="0"
-                    android:gravity="center_horizontal"
-                    android:text="TextView"
+                    android:textColor="@color/black"
                     android:textSize="30sp" />
 
                 <TextView
@@ -66,8 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:layout_weight="0"
-                    android:gravity="center_horizontal"
-                    android:text="TextView"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <TextView
@@ -75,8 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:gravity="center_horizontal"
-                    android:text="TextView"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -88,6 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="50dp"
             android:layout_marginTop="50dp"
+            android:textColor="@color/white"
             android:text="스캔하기" />
 
     </LinearLayout>

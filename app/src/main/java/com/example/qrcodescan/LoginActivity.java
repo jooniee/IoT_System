@@ -175,7 +175,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
-            Toast.makeText(this, "잘못된 메일이거나 비밀번호가 틀렸습니다", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "잘못된 아이디거나 비밀번호입니다.", Toast.LENGTH_LONG).show();
         }
         else {
             // Show a progress spinner, and kick off a background task to
@@ -187,6 +187,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         }
+
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)

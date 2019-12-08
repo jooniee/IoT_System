@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -48,53 +49,30 @@ public class ScanQR extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         final IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        TextView resultText=(TextView)findViewById(R.id.resulttext);
+        TextView myshoeinfosize= (TextView)findViewById(R.id.myshoeinfosize);
+        TextView myshoeinfolength= (TextView)findViewById(R.id.myshoeinfolength);
+        TextView myshoeinfowidth= (TextView)findViewById(R.id.myshoeinfowidth);
         Button sendbutton=(Button)findViewById(R.id.sendbutton);
-/*
-        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
-                getApplicationContext(),
-                "ap-northeast-2:c136b3bc-9f17-492d-9373-fdd2485f7a1b", // 자격 증명 풀 ID
-                Regions.AP_NORTHEAST_2 // 리전
-        );
-
-        AmazonS3 s3 = new AmazonS3Client(credentialsProvider);
-
-        s3.setRegion(Region.getRegion(Regions.AP_NORTHEAST_2));
-        s3.setEndpoint("s3.ap-northeast-2.amazonaws.com");
-
-        final TransferUtility transferUtility = new TransferUtility(s3, getApplicationContext());
-
-*/
         if(result != null) {
             if(result.getContents() == null) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "스캔 취소됨", Toast.LENGTH_LONG).show();
                 finish();
             } else {
-                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                resultText.setText(result.getContents());
-
+                String cookie = result.getContents();
+                int idx;
+                idx=cookie.indexOf("/");
+                myshoeinfosize.setText(cookie.substring(0,idx));
+                cookie=cookie.substring(idx+1);
+                idx=cookie.indexOf("/");
+                myshoeinfolength.setText(cookie.substring(0,idx)+"cm");
+                cookie=cookie.substring(idx+1);
+                idx=cookie.indexOf("/");
+                myshoeinfowidth.setText(cookie.substring(0,idx)+"cm");
+                cookie=cookie.substring(idx+1);
+                //QR코드가 스캔되면, 그정보를 신발 추천 액티비티에 같이 던져줌.
                 sendbutton.setOnClickListener(new View.OnClickListener(){
                     public void onClick(View v){
-/*
-                        File temp = null;
-                        try {
-                            temp=File.createTempFile("My_shoes_info",".txt");
-                            FileWriter writer= new FileWriter(temp,true);
-                            writer.write(result.getContents().toString());
-                            writer.flush();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        TransferObserver observer = transferUtility.upload(
-                                "myqrcodescan",
-                                "My_shoes_info.txt",
-                                temp
-                        );
-                        Toast.makeText(ScanQR.this, "전송 완료", Toast.LENGTH_LONG).show();
-                        temp.deleteOnExit();
-                         finish();
-*/
-                        Intent intent = new Intent(ScanQR.this, RecommandShoe.class);
+                        Intent intent = new Intent(ScanQR.this, RecommandShoe.class).putExtra("Cookie",result.getContents());;
                         startActivity(intent);
 
                     }
