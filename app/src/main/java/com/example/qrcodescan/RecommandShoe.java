@@ -91,16 +91,16 @@ public class RecommandShoe extends AppCompatActivity {
         //아마존 S3 버킷에서 파일 다운로드
         CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
                 getApplicationContext(),
-                "ap-northeast-2:c136b3bc-9f17-492d-9373-fdd2485f7a1b", // 자격 증명 풀 ID
-                Regions.AP_NORTHEAST_2 // 리전
+                "us-west-2:ea72d10d-f1cd-4116-b42f-8b1b1e1e2d11", // 자격 증명 풀 ID
+                Regions.US_WEST_2 // 리전
         );
         TransferNetworkLossHandler.getInstance(getApplicationContext());
         AmazonS3 s3 = new AmazonS3Client(credentialsProvider);
-        s3.setRegion(Region.getRegion(Regions.AP_NORTHEAST_2));
-        s3.setEndpoint("s3.ap-northeast-2.amazonaws.com");
+        s3.setRegion(Region.getRegion(Regions.US_WEST_2));
+        s3.setEndpoint("s3.us-west-2.amazonaws.com");
         final TransferUtility transferUtility = TransferUtility.builder()
                 .context(getApplicationContext())
-                .defaultBucket("myqrcodescan") // 디폴트 버킷 이름.
+                .defaultBucket("lambdas3test4iot") // 디폴트 버킷 이름.
                 .s3Client(s3)
                 .build();
         readfile(transferUtility);
@@ -157,6 +157,7 @@ public class RecommandShoe extends AppCompatActivity {
         for(int i=0;i<shoenum;i++)
         {
             //최대 가격보다 비싼것 걸러주고, 사이즈 차이나는것도 걸러준다. Spinner에서 지정한 브랜드 것만 보여준다.
+            if(Integer.parseInt(shoes[i][6])==0) continue;
             if(maxprice<Integer.parseInt(shoes[i][8])) continue;
             if(Integer.parseInt(shoes[i][4])<Integer.parseInt(myshoes[1])-5 || Integer.parseInt(shoes[i][4])>Integer.parseInt(myshoes[1])+5) continue;
             if(Float.parseFloat(shoes[i][5])<Float.parseFloat(myshoes[2])-0.75 || Float.parseFloat(shoes[i][5])>Float.parseFloat(myshoes[2])+0.75) continue;
@@ -212,7 +213,7 @@ public class RecommandShoe extends AppCompatActivity {
         }
         TransferObserver transferObserver =
                 transferUtility.download(
-                        "myqrcodescan",
+                        "lambdas3test4iot",
                         "shoes.txt",
                         temp
                 );
