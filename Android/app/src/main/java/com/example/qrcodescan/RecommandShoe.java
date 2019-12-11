@@ -40,7 +40,7 @@ import java.util.Comparator;
 public class RecommandShoe extends AppCompatActivity {
     Bitmap bitmap;
     Integer shoenum=0;
-    String[][] shoes=new String[100][10];//신발 DB
+    String[][] shoes=new String[1000][10];//신발 DB
     String[] myshoes=new String[10];//내신발 정보
     String selectshoe="모든 브랜드";
     Integer maxprice=9999999;
@@ -158,6 +158,7 @@ public class RecommandShoe extends AppCompatActivity {
         {
             //최대 가격보다 비싼것 걸러주고, 사이즈 차이나는것도 걸러준다. Spinner에서 지정한 브랜드 것만 보여준다.
             if(Integer.parseInt(shoes[i][6])==0) continue;
+            Log.d("test",""+i);
             if(maxprice<Integer.parseInt(shoes[i][8])) continue;
             if(Integer.parseInt(shoes[i][4])<Integer.parseInt(myshoes[1])-5 || Integer.parseInt(shoes[i][4])>Integer.parseInt(myshoes[1])+5) continue;
             if(Float.parseFloat(shoes[i][5])<Float.parseFloat(myshoes[2])-0.75 || Float.parseFloat(shoes[i][5])>Float.parseFloat(myshoes[2])+0.75) continue;
